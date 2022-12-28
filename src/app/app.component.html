@@ -1,0 +1,29 @@
+<form #f="ngForm" (ngSubmit)="formlog(f)">
+  <div class="form-group">
+    <label for="firstName">First Name </label>
+    <input
+      type="text"
+      ngModel
+      class="form-control"
+      name="firstName"
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      id="firstName"
+      required
+      minlength="3"
+      pattern="banan"
+    />
+
+    <div *ngIf="firstName.touched && firstName.status == 'INVALID'">
+      <div *ngIf="firstName.errors?.required">Fist Name is reqired</div>
+      <div *ngIf="firstName.errors?.minlength">
+        Fist Name less than 3 charcter
+      </div>
+      <div *ngIf="firstName.errors?.pattern">Fist Name is not matched</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary">Submit</button>
+</form>
+
+<signup-form></signup-form>
